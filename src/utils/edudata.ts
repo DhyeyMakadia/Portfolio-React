@@ -51,8 +51,8 @@ export const eduData = {
             tagName: "LJIET",
             title: "L.J. Institute of Engineering and Technology",
             link:'https://www.ljku.edu.in/',
-            startDate: "Aug-2018",
-            endDate: "Apr-2022",
+            startDate: "Jul-2018",
+            endDate: "May-2022",
             description: [
                 "Secured 8.58 CPI (out of 10) in Bachelor's Degree of Computer Engineering from Gujarat Technological University.",
                 "Selected to showcase a Project named Fleck Pro in the Project Expo of LJ Innovation Village-2020 where students participated from 11 States across India and presented 250+ projects at L.J. Campus",
