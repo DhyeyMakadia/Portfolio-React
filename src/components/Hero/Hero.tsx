@@ -19,7 +19,7 @@ export default function Hero(props: IProps) {
       <div className="d-flex flex-column justify-content-center hero-content">
         <div className="line1 mb-3">Hi, my name is</div>
         <div className="line2">
-          <h1 className="animate__animated animate__zoomInDown">
+          <h1 className="animate__animated animate__flash">
             Dhyey Makadia
           </h1>
         </div>
