@@ -7,9 +7,9 @@ export const Projects = {
             desc: "This is the first iteration of my personal website created with React.",
             techUsed: ['React.ts', 'HTML', 'CSS', 'Bootstrap4'],
             isLive: true,
-            liveLink: '#',
+            liveLink: 'dhyeymakadia.github.io',
             isOnGithub: true,
-            githubLink: '#',
+            githubLink: 'https://github.com/DhyeyMakadia/Personal-Website',
             displayOnSite: true
         },
         {
