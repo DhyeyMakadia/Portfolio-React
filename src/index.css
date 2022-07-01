@@ -438,6 +438,7 @@ a,a:hover{
 
 #navbar .navbar-nav .nav-link:hover{
   color: var(--light-slate);
+  cursor: pointer;
 }
 
 #navbar .navbar-nav .about-nav-link::before{

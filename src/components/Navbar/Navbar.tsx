@@ -5,7 +5,7 @@ export default function Navbar() {
   const [mobileMenu, setMobileMenu] = useState<string>("hide");
   const [mobileMenuOpenCount, setMobileMenuOpenCount] =
     useState<boolean>(false);
-  const [navbarStyle, setNavbarStyle] = useState<any>({top:'0'});
+  const [navbarStyle, setNavbarStyle] = useState<any>({ top: "0" });
   const wrapper: any = createRef();
   const btnWrapper: any = createRef();
 
@@ -61,6 +61,10 @@ export default function Navbar() {
     }
   };
 
+  const handleScroll = (id: string) => {
+    document.getElementById(id)?.scrollIntoView(true);
+  };
+
   return (
     <header id="header">
       <nav id="navbar" className="navbar navbar-expand-md" style={navbarStyle}>
@@ -76,7 +80,10 @@ export default function Navbar() {
         </button>
 
         {/* eslint-disable-next-line */}
-        <a className="navbar-brand canAlsoBlur" href="#">
+        <a
+          className="navbar-brand canAlsoBlur"
+          onClick={() => handleScroll("hero")}
+        >
           <svg
             id="logo"
             xmlns="http://www.w3.org/2000/svg"
@@ -100,22 +107,38 @@ export default function Navbar() {
         <div className="collapse navbar-collapse text-right">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item active">
-              <a className="nav-link about-nav-link" href="#about">
+              {/* eslint-disable-next-line */}
+              <a
+                className="nav-link about-nav-link"
+                onClick={() => handleScroll("about")}
+              >
                 About
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link experiences-nav-link" href="#experiences">
+              {/* eslint-disable-next-line */}
+              <a
+                className="nav-link experiences-nav-link"
+                onClick={() => handleScroll("experiences")}
+              >
                 Experiences
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link work-nav-link" href="#work">
+              {/* eslint-disable-next-line */}
+              <a
+                className="nav-link work-nav-link"
+                onClick={() => handleScroll("work")}
+              >
                 Work
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link contact-nav-link" href="#contact">
+              {/* eslint-disable-next-line */}
+              <a
+                className="nav-link contact-nav-link"
+                onClick={() => handleScroll("contact")}
+              >
                 Contact
               </a>
             </li>
