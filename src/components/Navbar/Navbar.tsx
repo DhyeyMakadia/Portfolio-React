@@ -1,23 +1,25 @@
 import React, { createRef, useEffect, useState } from "react";
 
+/* eslint-disable */
 export default function Navbar() {
   const [hamDataVisible, setHamDataVisible] = useState<boolean>(false);
   const [mobileMenu, setMobileMenu] = useState<string>("hide");
   const [mobileMenuOpenCount, setMobileMenuOpenCount] =
     useState<boolean>(false);
   const [navbarStyle, setNavbarStyle] = useState<any>({ top: "0" });
+  const [prevScrollpos, setPrevScrollpos] = useState(0);
+  const [currentScrollpos, setCurrentScrollpos] = useState(0);
   const wrapper: any = createRef();
   const btnWrapper: any = createRef();
 
-  var prevScrollpos = window.pageYOffset;
   window.onscroll = function () {
-    var currentScrollPos = window.pageYOffset;
-    if (prevScrollpos > currentScrollPos) {
+    setCurrentScrollpos(window.pageYOffset);
+    if (prevScrollpos >= currentScrollpos) {
       setNavbarStyle({ top: "0" });
     } else {
       setNavbarStyle({ top: "-80px" });
     }
-    prevScrollpos = currentScrollPos;
+    setPrevScrollpos(currentScrollpos);
   };
 
   useEffect(() => {
@@ -37,7 +39,6 @@ export default function Navbar() {
         document.removeEventListener("mousedown", handleClickOutside);
       };
     }
-    // eslint-disable-next-line
   }, [mobileMenuOpenCount]);
 
   const handleHamClick = () => {
@@ -61,8 +62,13 @@ export default function Navbar() {
     }
   };
 
-  const handleScroll = (id: string) => {
+  const Scroll = (id: string) => {
     document.getElementById(id)?.scrollIntoView(true);
+  };
+
+  const handleScroll = (id: string, View: string) => {
+    View === "mobileView" && handleHamClick();
+    Scroll(id);
   };
 
   return (
@@ -79,10 +85,9 @@ export default function Navbar() {
           <div className="ham-burger"></div>
         </button>
 
-        {/* eslint-disable-next-line */}
         <a
           className="navbar-brand canAlsoBlur"
-          onClick={() => handleScroll("hero")}
+          onClick={() => handleScroll("hero", "desktopView")}
         >
           <svg
             id="logo"
@@ -107,37 +112,33 @@ export default function Navbar() {
         <div className="collapse navbar-collapse text-right">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item active">
-              {/* eslint-disable-next-line */}
               <a
                 className="nav-link about-nav-link"
-                onClick={() => handleScroll("about")}
+                onClick={() => handleScroll("about", "desktopView")}
               >
                 About
               </a>
             </li>
             <li className="nav-item">
-              {/* eslint-disable-next-line */}
               <a
                 className="nav-link experiences-nav-link"
-                onClick={() => handleScroll("experiences")}
+                onClick={() => handleScroll("experiences", "desktopView")}
               >
                 Experiences
               </a>
             </li>
             <li className="nav-item">
-              {/* eslint-disable-next-line */}
               <a
                 className="nav-link work-nav-link"
-                onClick={() => handleScroll("work")}
+                onClick={() => handleScroll("work", "desktopView")}
               >
                 Work
               </a>
             </li>
             <li className="nav-item">
-              {/* eslint-disable-next-line */}
               <a
                 className="nav-link contact-nav-link"
-                onClick={() => handleScroll("contact")}
+                onClick={() => handleScroll("contact", "desktopView")}
               >
                 Contact
               </a>
@@ -157,20 +158,28 @@ export default function Navbar() {
             <div className="modal-content">
               <div className="modal-body">
                 <div className="d-flex flex-column align-items-center justify-content-center h-100">
-                  <a href="#about" id="mb-about" onClick={handleHamClick}>
+                  <a
+                    id="mb-about"
+                    onClick={() => handleScroll("about", "mobileView")}
+                  >
                     About
                   </a>
                   <a
-                    href="#experiences"
                     id="mb-experiences"
-                    onClick={handleHamClick}
+                    onClick={() => handleScroll("experiences", "mobileView")}
                   >
                     Experiences
                   </a>
-                  <a href="#work" id="mb-work" onClick={handleHamClick}>
+                  <a
+                    id="mb-work"
+                    onClick={() => handleScroll("work", "mobileView")}
+                  >
                     Work
                   </a>
-                  <a href="#contact" id="mb-contact" onClick={handleHamClick}>
+                  <a
+                    id="mb-contact"
+                    onClick={() => handleScroll("contact", "mobileView")}
+                  >
                     Contact
                   </a>
                 </div>
